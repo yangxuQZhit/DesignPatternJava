@@ -1,0 +1,23 @@
+package behavioral.interpret.expression;
+
+/**
+ * @ClassName TerminalExpression
+ * @Description
+ * @Author yangxu
+ * @Date 2019-12-14 10:27
+ **/
+public class TerminalExpression implements Expression {
+    private String data;
+
+    public TerminalExpression(String data) {
+        this.data = data;
+    }
+
+    @Override
+    public boolean interpret(String context) {
+        if (context.contains(data)) {
+            return true;
+        }
+        return false;
+    }
+}

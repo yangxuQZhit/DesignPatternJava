@@ -1,0 +1,34 @@
+package behavioral.interpret;
+
+import behavioral.interpret.expression.AndExpression;
+import behavioral.interpret.expression.Expression;
+import behavioral.interpret.expression.OrExpression;
+import behavioral.interpret.expression.TerminalExpression;
+
+/**
+ * @ClassName InterpretPatternDemo
+ * @Description
+ * @Author yangxu
+ * @Date 2019-12-14 10:22
+ **/
+public class InterpretPatternDemo {
+    public static Expression getMaleExpression() {
+        Expression robert = new TerminalExpression("Robert");
+        Expression john = new TerminalExpression("John");
+        return new OrExpression(robert, john);
+    }
+
+    public static Expression getMarriedWomanExpression() {
+        Expression julie = new TerminalExpression("Julie");
+        Expression married = new TerminalExpression("Married");
+        return new AndExpression(julie, married);
+    }
+
+    public static void main(String[] args){
+        Expression isMale = getMaleExpression();
+        Expression isMarriedWoman = getMarriedWomanExpression();
+
+        System.out.println("John is male? " + isMale.interpret("John"));
+        System.out.println("Julie is a married woman? " + isMarriedWoman.interpret("Married Julie"));
+    }
+}
